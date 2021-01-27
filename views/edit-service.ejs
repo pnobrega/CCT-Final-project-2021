@@ -1,20 +1,6 @@
 <%- include('includes/header') %>
   
   <div class="container py-md-5 container--narrow">
-    <!-- <form action="/service/<%= service._id %>/edit" method="POST">
-      <div class="form-group">
-        <label for="post-title" class="text-muted mb-1"><small>Title</small></label>
-        <!-- output data -->
-        <!-- <input required name="title" value="<%= service.title %>" id="post-title" class="form-control form-control-lg form-control-title" type="text" placeholder="" autocomplete="off">
-      </div>
-
-      <div class="form-group">
-        <label for="post-body" class="text-muted mb-1"><small>Body Content</small></label>
-        <textarea required name="body"  id="post-body" class="body-content tall-textarea form-control" type="text"><%= service.body %></textarea>
-      </div>
-      
-      <button class="btn btn-primary">Save Updates</button>
-    </form> -->
 
     <!-- new form here -->
     <form class="form-horizontal" action="/service/<%= service._id %>/edit" method="POST">
