@@ -1,0 +1,83 @@
+<%- include('includes/header') %>
+  
+  <div class="container py-md-5 container--narrow">
+    <!-- <form action="/service/<%= service._id %>/edit" method="POST">
+      <div class="form-group">
+        <label for="post-title" class="text-muted mb-1"><small>Title</small></label>
+        <!-- output data -->
+        <!-- <input required name="title" value="<%= service.title %>" id="post-title" class="form-control form-control-lg form-control-title" type="text" placeholder="" autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="post-body" class="text-muted mb-1"><small>Body Content</small></label>
+        <textarea required name="body"  id="post-body" class="body-content tall-textarea form-control" type="text"><%= service.body %></textarea>
+      </div>
+      
+      <button class="btn btn-primary">Save Updates</button>
+    </form> -->
+
+    <!-- new form here -->
+    <form class="form-horizontal" action="/service/<%= service._id %>/edit" method="POST">
+      <fieldset>
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="make">Make</label>  
+        <div class="col-md-4">
+        <input id="make" name="make" value="<%= service.make %>" type="text" placeholder="Make of the vehicle" class="form-control input-md" required="">
+        </div>
+      </div>
+      
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="model">Model</label>  
+        <div class="col-md-4">
+        <input id="model" name="model" value="<%= service.model %>" type="text" placeholder="model of the vehicle" class="form-control input-md" required="">
+          
+        </div>
+      </div>
+      
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="licence">Licence</label>  
+        <div class="col-md-4">
+        <input id="licence" value="<%= service.licence %>" name="licence" type="text" placeholder="Licence or plate number" class="form-control input-md" required="">
+          
+        </div>
+      </div>
+      
+      <!-- Select Basic -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="engineType">Engine type</label>
+        <div class="col-md-4">
+          <select id="engineType" value="<%= service.engineType %>" name="engineType" class="form-control">
+            <option value="1">Petrol</option>
+            <option value="2">Diesel</option>
+            <option value="3">Electric</option>
+            <option value="4">Hybrid</option>
+            <option value="5">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="dateService">Date</label>  
+        <div class="col-md-4">
+        <input id="dateService" name="dateService" type="date" placeholder="Choose a date" class="form-control input-md" required="">
+          
+        </div>
+      </div>
+      
+      <!-- Textarea -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="comments">Comments</label>
+        <div class="col-md-4">                     
+          <textarea class="form-control" id="comments" name="comments"><%= service.comments %></textarea>
+        </div>
+      </div>
+      
+      </fieldset>
+      <button class="btn btn-primary">Save Updates</button>
+      </form>
+  </div>
+  
+  <%- include('includes/footer') %>

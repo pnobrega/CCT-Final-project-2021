@@ -1,0 +1,41 @@
+<%- include('includes/header') %>
+  
+  <div class="container py-md-5 container--narrow">
+    <div class="d-flex justify-content-between">
+      <!-- data to be displayed -->
+      <h2>Licence: <%= service.licence %></h2>
+      <% if (service.isVisitorOwner) { %>
+        <span class="pt-2">
+          <a href="/service/<%= service._id %>/edit" class="text-primary mr-2" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-edit"></i></a>
+        </span>
+      <% } %>
+    </div>
+      
+    <p class="text-muted small mb-4">
+      <!-- data to be displayed -->
+      Oppened by <a href="/profile/<%= user.username %>"><%= service.author.username %></a> on <%= service.createdDate.getDate()%>/<%= service.createdDate.getMonth() +1 %>/<%= service.createdDate.getFullYear()%></p>
+
+    <div class="body-content">
+      <!-- data to be displayed -->
+      <h4>Make: <%= service.make %></h4>
+    </div>
+    <div class="body-content">
+      <!-- data to be displayed -->
+      <h4>Model: <%= service.model %></h4>
+    </div>
+    <div class="body-content">
+      <!-- data to be displayed -->
+      <h4>Engine type: <%= service.engineType%></h4>
+    </div>
+    <div class="body-content">
+      <!-- data to be displayed -->
+      <h4>Date of Service: <%= service.dateService %></h4>
+    </div>
+    <div class="body-content">
+      <!-- data to be displayed -->
+      <h4>Comments:<br> <%= service.comments %></h4>
+    </div>
+
+  </div>
+  
+  <%- include('includes/footer') %> 

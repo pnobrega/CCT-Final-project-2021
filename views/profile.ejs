@@ -1,0 +1,19 @@
+<%- include('includes/header') %>
+
+  <div class="container py-md-5 container--narrow">
+    <h2> <%= profileUsername %></h2>
+  
+    <div class="profile-nav nav nav-tabs pt-2 mb-4">
+      <a href="#" class="profile-nav-link nav-item nav-link active">Total services: 3</a>
+    </div>
+  
+    <div class="list-group">
+        <% services.forEach(function(service) { %>
+            <a href="/service/<%= service._id %>" class="list-group-item list-group-item-action">
+                <strong><%= service.licence %></strong> on <%= service.createdDate.getDate()%>/<%= service.createdDate.getMonth() +1 %>/<%= service.createdDate.getFullYear()%>
+            </a>
+        <% }) %>
+    </div>
+  </div>
+
+  <%- include('includes/footer') %> 
