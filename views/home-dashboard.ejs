@@ -1,6 +1,9 @@
 <%- include('includes/header') %>
   
   <div class="container py-md-5 container--narrow">
+
+    <%- include('includes/flash') %>
+    
     <div class="text-center">
       <h2>Hello <strong><a href="/profile/<%= user.username %>"><%= user.username %></a></strong>, thanks for choose Ger's Garage.</h2>
       <p class="lead text-muted">To book a new service click at the green button at the top, our's mechanics and engeneers will be happy to help you. </p>

@@ -2,8 +2,10 @@
   
   <div class="container py-md-5 container--narrow">
 
+    <%- include('includes/flash') %>
+    <a class="small font-weight-bold" href="/service/<%= service._id %>">&laquo; Back to service</a>
     <!-- new form here -->
-    <form class="form-horizontal" action="/service/<%= service._id %>/edit" method="POST">
+    <form class="form-horizontal mt-3" action="/service/<%= service._id %>/edit" method="POST">
       <fieldset>
       <!-- Text input-->
       <div class="form-group">

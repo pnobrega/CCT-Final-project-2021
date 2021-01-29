@@ -2,10 +2,11 @@ const servicesCollection = require('../db').db().collection("services")
 const ObjectID = require('mongodb').ObjectID
 const User = require('./User')
 
-let Service = function(data, userid){
+let Service = function(data, userid, requestedServiceId){
     this.data = data
     this.errors = []
     this.userid = userid
+    this.requestedServiceId = requestedServiceId
 }
 
 Service.prototype.cleanUp = function(){
@@ -46,8 +47,8 @@ Service.prototype.create = function(){
         this.cleanUp()
         this.validate()
         if (!this.errors.length) {
-            servicesCollection.insertOne(this.data).then(() => {
-                resolve()
+            servicesCollection.insertOne(this.data).then((info) => {
+                resolve(info.ops[0]._id)
             }).catch(() => {
                 this.errors.push("Prease try again later.")
                 reject(this.errors)
@@ -57,6 +58,42 @@ Service.prototype.create = function(){
         }
     })
     
+}
+
+Service.prototype.update = function(){
+    return new Promise(async (resolve, reject) => {
+        try{
+            let service = await Service.findSingleById(this.requestedServiceId, this.userid)
+            if(service.isVisitorOwner){
+                let status = await this.actuallyUpdate()
+                resolve(status)
+            } else{
+                reject()
+            }
+        }catch{
+            reject()
+        }
+    })
+}
+
+Service.prototype.actuallyUpdate = function(){
+    return new Promise(async (resolve, reject) => {
+        this.cleanUp()
+        this.validate()
+        if(!this.errors.length){
+            await servicesCollection.findOneAndUpdate({_id: new ObjectID(this.requestedServiceId)}, {$set: {
+                make: this.data.make, 
+                model: this.data.model, 
+                licence: this.data.licence, 
+                engineType: this.data.engineType,
+                dateService: this.data.dateService,
+                comments: this.data.comments
+            }})
+            resolve("success")
+        } else{
+            resolve("failure")
+        }
+    })
 }
 
 
